@@ -38,7 +38,7 @@ jobs:
       - name: Decrypt
         if: ${{ steps.status.outputs.online == '0' && env.COUNT > 3 }}
         run: |
-          gpg --pinentry-mode=loopback --passphrase  "${{ secrets.GPG_PASSPHRASE }}" -d -o data.md data.md.gpg
+          gpg --pinentry-mode=loopback --passphrase  "${{ secrets.GPG_PASSPHRASE }}" -d -o death-plan.md death-plan.md.gpg
 
       ## * Update count and cron
       - name: Update count and cron

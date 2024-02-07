@@ -14,7 +14,7 @@ my death.
 flowchart LR
     subgraph "local init"
         A[file] -->|GPG encrypt| B[GitHub]
-        B --> C[encrypt file to data.md.gpg]
+        B --> C[encrypt file to death-plan.md.gpg]
     end
 
     subgraph "workflow"
@@ -26,7 +26,7 @@ flowchart LR
     G -.- End[notify]
     H[action trigger] --> id2{count > 3}
     id2 -->|no| D
-    id2 -->|yes| F1[decrypt file to data.md]
+    id2 -->|yes| F1[decrypt file to death-plan.md]
     F1 -.-> C
 ```
 
