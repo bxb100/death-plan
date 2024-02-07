@@ -6,7 +6,6 @@ on:
 
 env:
   COUNT: 1
-  github_token: ${{ secrets.WORKFLOW_TOKEN }}
 
 jobs:
   rolling:
@@ -14,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Tailscale Action
         uses: tailscale/github-action@v2
