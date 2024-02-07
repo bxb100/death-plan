@@ -13,8 +13,8 @@ my death.
 ```mermaid
 flowchart LR
     subgraph "local init"
-        A[file] -->|GPG encrypt| B[GitHub]
-        B --> C[encrypt file to death-plan.md.gpg]
+        A[file] -->|GPG encrypt| B[death-plan.md.gpg]
+        B --> |upload|C[GitHub]
     end
 
     subgraph "workflow"
