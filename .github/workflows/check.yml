@@ -6,6 +6,7 @@ on:
 
 env:
   COUNT: 1
+  github_token: ${{ secrets.WORKFLOW_TOKEN }}
 
 jobs:
   rolling:
@@ -50,7 +51,7 @@ jobs:
         if: ${{ steps.status.outputs.online != '0' }}
         run: |
           sed -i "s/COUNT:\ [0-3]/COUNT:\ 0/" .github/workflows/check.yml
-          sed -i "s/cron:\ '0 12-14 * 6-9 *'/cron:\ '0 8-12 6 6 1'/" .github/workflows/check.yml 
+          sed -i "s/cron:\ '0 12-14 \* 6-9 \*'/cron:\ '0 8-12 6 6 1'/" .github/workflows/check.yml 
 
       - name: Push to GitHub
         run: |
