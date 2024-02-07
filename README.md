@@ -29,3 +29,12 @@ flowchart LR
     id2 -->|yes| F1[decrypt file]
     F1 -.-> C
 ```
+
+## Variables
+
+- `secrets.WORKFLOW_TOKEN`: need workflow and repo read write access
+- `secrets.TS_AUTH_KEY`: tailscale auth key
+- `GPG_SIGNING_KEY`: gpg private key base64[^1]
+- `GPG_PASSPHRASE`: gpg passphrase
+
+[^1]: https://stackoverflow.com/questions/61096521/how-to-use-gpg-key-in-github-actions
