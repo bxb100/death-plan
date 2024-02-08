@@ -60,5 +60,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add -A
-          git commit -m "CI: update and push COUNT: ${{ env.COUNT }} " || true
+          git commit -m "CI: update and push COUNT: ${{ env.COUNT + 1 }} " || true
           git push
