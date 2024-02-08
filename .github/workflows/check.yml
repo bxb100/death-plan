@@ -2,7 +2,7 @@ name: Check
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12-14 * 6-9 *'
+    - cron: '0 8-12 6 6 1'
 
 env:
   COUNT: 7
