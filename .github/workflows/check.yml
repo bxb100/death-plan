@@ -57,8 +57,11 @@ jobs:
 
       - name: Push to GitHub
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          let new_count=$(($COUNT + 1))
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
           git add -A
-          git commit -m "CI: update and push COUNT: ${{ env.COUNT + 1 }} " || true
+          git commit -m "CI: update and push COUNT: $new_count" || true
           git push
+        env:
+          COUNT: ${{ env.COUNT }}
