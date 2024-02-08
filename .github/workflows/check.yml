@@ -57,7 +57,8 @@ jobs:
         if: ${{ steps.status.outputs.online != '0' }}
         run: |
           rm -f death-plan.md
-          sed -i "s/COUNT:\ [0-3]/COUNT:\ 0/" .github/workflows/check.yml
+          # https://unix.stackexchange.com/questions/308636/how-to-use-sed-to-replace-numbers-with-parenthese
+          sed -i "s/COUNT:\ [0-9]\{1,\}/COUNT:\ 0/" .github/workflows/check.yml
           sed -i "s/cron:\ '0 12-14 \* 6-9 \*'/cron:\ '0 8-12 6 6 1'/" .github/workflows/check.yml 
           echo "COMMIT_MSG=CI: reset all" >> "$GITHUB_ENV"
 
