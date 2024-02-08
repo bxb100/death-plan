@@ -5,7 +5,7 @@ on:
     - cron: '0 12-14 * 6-9 *'
 
 env:
-  COUNT: 1
+  COUNT: 2
 
 jobs:
   rolling:
