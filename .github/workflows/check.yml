@@ -38,8 +38,9 @@ jobs:
 
       - name: Decrypt
         if: ${{ steps.status.outputs.online == '0' && env.COUNT > 3 }}
+        # --yes overwrite the file to avoid tty required error
         run: |
-          gpg --pinentry-mode=loopback --passphrase  "${{ secrets.GPG_PASSPHRASE }}" -d -o death-plan.md death-plan.md.gpg
+          gpg --pinentry-mode=loopback --yes --passphrase  "${{ secrets.GPG_PASSPHRASE }}" -d -o death-plan.md death-plan.md.gpg
 
       ## * Update count and cron
       - name: Update count and cron
