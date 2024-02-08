@@ -2,11 +2,14 @@
 
 ## Introduction
 
-I was completely unprepared for my [friend](https://github.com/yhc-huichao)'s death, and his family and I are at a loss on how to manage his digital
-assets. Without knowledge of his passwords or account details, we’re unsure how to access his digital assets, social
-media accounts, email, bank, insurance, and investment accounts.
-Therefore, I’m writing this to my family and friends to provide guidance on how to handle these matters in the event of
-my death.
+I was completely unprepared for my [friend](https://github.com/yhc-huichao)'s death. 
+
+Without knowledge of his passwords or account details, we’re unsure how to access his digital assets, social
+media accounts, email, enter his phone.
+
+Therefore, I’m writing this tool to remember him, and to help myself and others handle this sad situation.
+
+> Do not go gentle into that good night
 
 ## Process
 
@@ -23,7 +26,7 @@ flowchart LR
         id1 -->|no| G[count++ and update cron]
     end
 
-    G -.- End[notify]
+    G -.- End[[notify]]
     H[action trigger] --> id2{count > 3}
     id2 -->|no| D
     id2 -->|yes| F1[decrypt file to death-plan.md]
