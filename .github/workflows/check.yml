@@ -6,6 +6,7 @@ on:
 
 env:
   COUNT: 6
+  COMMIT_MSG: "CI: chore"
 
 jobs:
   rolling:
@@ -48,21 +49,22 @@ jobs:
         run: |
           sed -i "s/COUNT:\ $COUNT/COUNT:\ $(($COUNT + 1))/" .github/workflows/check.yml
           sed -i "s/cron:\ '0 8-12 6 6 1'/cron:\ '0 12-14 * 6-9 *'/" .github/workflows/check.yml
+          let new_count=$(($COUNT + 1)) 
+          echo "COMMIT_MSG=CI: update and push COUNT: $new_count" >> "$GITHUB_ENV"
 
       ## * Rest all
       - name: Rest all
         if: ${{ steps.status.outputs.online != '0' }}
         run: |
+          rm -f death-plan.md
           sed -i "s/COUNT:\ [0-3]/COUNT:\ 0/" .github/workflows/check.yml
           sed -i "s/cron:\ '0 12-14 \* 6-9 \*'/cron:\ '0 8-12 6 6 1'/" .github/workflows/check.yml 
+          echo "COMMIT_MSG=CI: reset all" >> "$GITHUB_ENV"
 
       - name: Push to GitHub
-        run: |
-          let new_count=$(($COUNT + 1))
+        run: | 
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add -A
-          git commit -m "CI: update and push COUNT: $new_count" || true
+          git commit -m "$COMMIT_MSG" || true
           git push
-        env:
-          COUNT: ${{ env.COUNT }}
